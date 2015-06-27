@@ -1,7 +1,7 @@
 setwd("~/Dropbox/Coursera/R Programming")
 
 pollutantmean <- function(directory, pollutant = "sulfate", id = 1:332) {  
-  # set working directory
+  # set working directory to load data
   if(grep("specdata", directory) == 1) {
     directory <- ("./specdata/")
   }
