@@ -25,22 +25,4 @@ file_down <- read.csv("./data/wksst8110.for", header = T)
 dim(file_down)
 fd <- "./data/wksst8110.for"
 file <- read.fwf(file=fd, widths=c(-1,9,-5,4,4,-5,4,4,-5,4,4,-5,4,4))
-  
-  
-list.files()
-data <- read.csv("./getdata-wksst8110.for", header=T)
-head(data)
-dim(data)
-file_name <- "./getdata-wksst8110.for"
-df <- read.fwf(file=file_name,widths=c(-1,9,-5,4,4,-5,4,4,-5,4,4,-5,4,4), skip=4)
-head(df)
-sum(df[, 4])
-
-
-
-
-
-
-
-
-
+sum(file[ ,4])
