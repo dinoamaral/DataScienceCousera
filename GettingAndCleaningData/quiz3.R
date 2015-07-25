@@ -72,3 +72,17 @@ data_merged[order(rankingGDP, decreasing = TRUE), list(CountryCode, Long.Name.x,
 What is the average GDP ranking for the "High income: OECD" and "High income: nonOECD" group?
 
 data_merged[, mean(rankingGDP, na.rm = TRUE), by = Income.Group]
+
+## Question 5
+Cut the GDP ranking into 5 separate quantile groups. Make a table versus Income.Group. How many countries 
+are Lower middle income but among the 38 nations with highest GDP?
+
+breaks <- quantile(data_merged$rankingGDP, probs = seq(0, 1, 0.2), na.rm = TRUE)
+data_merged$quantileGDP <- cut(data_merged$rankingGDP, breaks = breaks)
+data_merged[Income.Group == "Lower middle income", .N, by = c("Income.Group", "quantileGDP")]
+
+
+
+
+
+
