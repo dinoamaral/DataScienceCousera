@@ -35,14 +35,28 @@ names(joinLabel) <- "activity"
 # 4. Appropriately labels the data set with descriptive activity names. 
 names(joinSubject) <- "subject"
 cjoined_data <- cbind(joinSubject, joinLabel, joinData)
-write.table(cleanedData, "./dataset/merged_data.txt")
+write.table(cjoined_data, "~/GitHub/DataScienceCoursera/GettingAndCleaningData/data/merged_data.txt")
 
 # 5. From the data set in step 4, creates a second, independent tidy data set with the average of each 
 # variable for each activity and each subject.
 
+subject_Len <- length(table(joinSubject)) 
+activity_Len <- dim(activity_label)[1]
+column_Len <- dim(cleanedData)[2]
+result <- matrix(NA, nrow=subject_Len*activity_Len, ncol=column_Len) 
+result <- as.data.frame(result)
+colnames(result) <- colnames(cjoined_data)
 
-
-
-
-
-
+nrow <- 1
+for(i in 1:subject_Len) {
+  for(j in 1:activity_Len) {
+    result[nrow, 1] <- sort(unique(joinSubject)[, 1])[i]
+    result[nrow, 2] <- activity_label[j, 2]
+    var1 <- i == cjoined_data$subject
+    var2 <- activity_label[j, 2] == cjoined_data$activity_label
+    result[nrow, 3:column_Len] <- colMeans(cjoined_data[var1&var2, 3:column_Len])
+    nrow <- nrow + 1
+  }
+}
+head(result)
+write.table(result, "~/GitHub/DataScienceCoursera/GettingAndCleaningData/data/data_with_means.txt")
