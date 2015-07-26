@@ -1,10 +1,11 @@
 # Getting and Cleaning Data Course Project CodeBook
-## Here follows a description of variables, data and transformation performed in the Course Project of "Getting and Cleaning Data" :
+### Here follows a description of variables, data and transformation performed in the Course Project of "Getting and Cleaning Data" :
 
 * The data for the project:
     https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
 * The run_analysis.R script performs the following steps to clean the data:
+
 a) Read X_train.txt, y_train.txt and subject_train.txt from the "./data/train" folder and store them in trainData, trainLabel and trainSubject variables respectively.
 
 b) Read X_test.txt, y_test.txt and subject_test.txt from the "./data/test" folder and store them in testData, testLabel and testsubject variables respectively.
