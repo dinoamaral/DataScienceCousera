@@ -1,32 +1,31 @@
 # Getting and Cleaning Data Course Project CodeBook
-### Here follows a description of variables, data and transformation performed in the Course Project of "Getting and Cleaning Data" :
+### Here follows a description of variables, data and transformation performed in the Course Project of "Getting and Cleaning Data" (Coursera):
 
-* The data for the project:
+* The data for the project was collected from the link bellow :
     https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-* The run_analysis.R script performs the following steps to clean the data:
+* The run_analysis.R script is built using the following steps:
 
-a) Read X_train.txt, y_train.txt and subject_train.txt from the "./data/train" folder and store them in trainData, trainLabel and trainSubject variables respectively.
+a) Read X_train.txt, y_train.txt and subject_train.txt from the "./data/train" directory and assign the following  variables respectively: trainData, trainLabel and trainSubject.
 
-b) Read X_test.txt, y_test.txt and subject_test.txt from the "./data/test" folder and store them in testData, testLabel and testsubject variables respectively.
+b) Read X_test.txt, y_test.txt and subject_test.txt from the "./data/test" directory and assign the following  variables respectively: testData, testLabel and testSubject.
 
-* Concatenate testData to trainData to generate a 10299x561 data frame, joinData; concatenate testLabel to trainLabel to generate a 10299x1 data frame, joinLabel; concatenate testSubject to trainSubject to generate a 10299x1 data frame, joinSubject.
+* Join testData and trainData to generate a 10299x561 data frame called joinData; join testLabel and trainLabel to generate a 10299x1 data frame called joinLabel; join testSubject and trainSubject to generate a 10299x1 data frame called joinSubject.
 
-* Read the features.txt file from the "/data" folder and store the data in a variable called features. We only extract the measurements on the mean and standard deviation. This results in a 66 indices list. We get a subset of joinData with the 66 corresponding columns.
+* Read the features.txt file from the "/data" folder and store the data in a variable called measures. Only the measurements on the mean and standard deviation are extracted and stores at mean_std variable.
 
-* Clean the column names of the subset. We remove the "()" and "-" symbols in the names, as well as make the first letter of "mean" and "std" a capital letter "M" and "S" respectively.
+* It is removed the following symbols from names: "()" and "-". It is also changed the first letter of "mean" and "std" for a corresponding capital letter respectively.
 
-* Read the activity_labels.txt file from the "./data"" folder and store the data in a variable called activity.
+* Store the data from file "./data/activity_labels.txt" in a variable called activity_label.
 
-* Clean the activity names in the second column of activity. We first make all names to lower cases. If the name has an underscore between letters, we remove the underscore and capitalize the letter immediately after the underscore.
+* Make all names to lower cases and remove the underscore and insert a capitalized letter right fater the underscore
 
 * Transform the values of joinLabel according to the activity data frame.
 
-* Combine the joinSubject, joinLabel and joinData by column to get a new cleaned 10299x68 data frame, cleanedData. 
-* Properly name the first two columns, "subject" and "activity". The "subject" column contains integers that range from 1 to 30 inclusive; the "activity" column contains 6 kinds of activity names; the last 66 columns contain measurements that range from -1 to 1 exclusive.
+* Combine the joinSubject, joinLabel and joinData by column and store a variable called cjoined_data.
 
-* Write the cleanedData out to "merged_data.txt" file in current working directory.
-* Finally, generate a second independent tidy data set with the average of each measurement for each activity and each subject. We have 30 unique subjects and 6 unique activities, which result in a 180 combinations of the two. Then, for each combination, we calculate the mean of each measurement with the corresponding combination. So, after initializing the result data frame and performing the two for-loops, we get a 180x68 data frame.
-* Write the result out to "data_with_means.txt" file in current working directory.
+* Insert the names "subject" and "activity". The "subject" column ranges from 1 to 30 and "activity" has 6 differents types of classification
 
+* Write the cjoined_data out to "merged_data.txt".
 
+* Write the result out to "data_with_means.txt".
