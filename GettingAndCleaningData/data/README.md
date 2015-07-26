@@ -1,3 +1,3 @@
 # Getting and Cleaning Data Course Project
-## Just a tes
-### go go
+This file describes how run_analysis.R script works.
+
