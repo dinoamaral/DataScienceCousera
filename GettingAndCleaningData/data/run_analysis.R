@@ -34,10 +34,10 @@ names(joinLabel) <- "activity"
 
 # 4. Appropriately labels the data set with descriptive activity names. 
 names(joinSubject) <- "subject"
-cleanedData <- cbind(joinSubject, joinLabel, joinData)
+cjoined_data <- cbind(joinSubject, joinLabel, joinData)
 write.table(cleanedData, "./dataset/merged_data.txt")
 
-# 5 From the data set in step 4, creates a second, independent tidy data set with the average of each 
+# 5. From the data set in step 4, creates a second, independent tidy data set with the average of each 
 # variable for each activity and each subject.
 
 
